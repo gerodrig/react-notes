@@ -1,48 +1,52 @@
-import { BrowserRouter, Navigate, NavLink } from 'react-router-dom';
-import { Routes, Route  } from 'react-router-dom';
+import {
+	BrowserRouter as Router,
+	Switch,
+	Route,
+	NavLink,
+	Redirect,
+} from 'react-router-dom';
+// import { LazyPage1, LazyPage2, LazyPage3 } from '../01-lazyload/pages/index';
 import { routes } from './routes';
 
 import logo from '../logo.svg';
 import { Suspense } from 'react';
 
-
 export const Navigation = () => {
 	return (
-        <Suspense fallback={<div>Loading...</div>}>
-            <BrowserRouter>
-                <div className='main-layout'>
-                    <nav>
-                        <img src={logo} alt='logo' />
-                    <ul>
-                        {/*TODO: create dynamic navlinks*/}
-                        {routes.map(({to, name}) => {
-                            return <li key={to}><NavLink to={to} className={ ({isActive}) => isActive ? 'nav-active' : ''}>{name}</NavLink></li>
-                        })}
-                        {/* <li>
-                            <NavLink to='/lazy1' className={ ({isActive}) => isActive ? 'nav-active' : ''} >Lazy 1</NavLink>
-                        </li>
-                        <li>
-                            <NavLink to='/lazy2' className={ ({isActive}) => isActive ? 'nav-active' : ''} >Lazy 2</NavLink>
-                        </li>
-                        <li>
-                            <NavLink to='/lazy3' className={ ({isActive}) => isActive ? 'nav-active' : ''} >Lazy 3</NavLink>
-                        </li>
-                        */}
-                    </ul> 
-                    </nav>
+		<Suspense fallback={<div>Loading...</div>}>
+			<Router>
+				<div className='main-layout'>
+					<nav>
+						<img src={logo} alt='logo' />
+						<ul>
+							{routes.map(({ path, name }) => (
+								<li key={path}>
+									<NavLink
+										key={path}
+										to={path}
+										activeClassName='nav-active'
+										exact
+									>
+										{name}
+									</NavLink>
+								</li>
+							))}
+						</ul>
+					</nav>
 
-                    <Routes>
-                        {routes.map( ({to, path, Component}) => {
-                            return <Route key={ to } path={ path } element={ <Component /> } />
-                        })}
-                        {/* <Route path='lazy1' element={ <LazyPage1 />} />
-                        <Route path='lazy2' element={<LazyPage2 />} />
-                        <Route path='lazy3' element={<LazyPage3 />} /> */}
+					<Switch>
+						{routes.map(({ path, Component }) => (
+							<Route
+								key={path}
+								path={path}
+								render={() => <Component />}
+							/>
+						))}
 
-                        <Route path='/*' element={ <Navigate to={ routes[0].to} replace /> } />
-                    </Routes>
-                </div>
-            </BrowserRouter>
-        </Suspense>
+						<Redirect to={routes[0]['path']} />
+					</Switch>
+				</div>
+			</Router>
+		</Suspense>
 	);
 };
