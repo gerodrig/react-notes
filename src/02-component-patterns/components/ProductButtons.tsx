@@ -8,9 +8,10 @@ export interface Props {
     style?: React.CSSProperties;
 }
 
-export const ProductButtons = ({className, style}: Props) => {
+export const ProductButtons = ({className, style }: Props) => {
 
     const { increaseBy, counter } = useContext(ProductContext);
+
     return (
         <div className={`${ styles.buttonsContainer } ${ className }` } style={ style }>
             <button
