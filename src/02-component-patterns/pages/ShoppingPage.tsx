@@ -5,7 +5,7 @@ import {
 	ProductTitle,
 } from '../components';
 import '../styles/custom-styles.css';
-import { products } from '../../data/products';
+import { products } from '../data/products';
 
 const product = products[0];
 
@@ -18,10 +18,12 @@ export const ShoppingPage = () => {
 			<ProductCard
 				key={product.id}
 				product={product}
-				className='bg-dark text-white'
-				initialValues={{ count: 4, maxCount: 9 }}
+				initialValues={{ 
+					count: 4, 
+					// maxCount: 9 
+				}}
 			>
-				{( {reset, count, increaseBy, isMaxCountReached }) => (
+				{({ reset, count, increaseBy, isMaxCountReached }) => (
 					<>
 						<ProductImage
 							className='custom-image'
@@ -33,11 +35,11 @@ export const ShoppingPage = () => {
 						<ProductTitle className='text-bold' />
 						<ProductButtons className='custom-buttons' />
 
-						<button onClick={reset}>Reset</button>
-						<button onClick={() => increaseBy(-2)}> -2 </button>
+						{/* <button onClick={reset}>Reset</button>
+						<button onClick={() => increaseBy(-2)}> -2 </button> */}
 						{/*if maxcount not reached show otherwise disable */}
-						{ (!isMaxCountReached) && <button onClick={() => increaseBy(+2)}> +2 </button>}
-						<span>{ count }</span>
+						{/* { (!isMaxCountReached) && <button onClick={() => increaseBy(+2)}> +2 </button>}
+						<span>{ count }</span> */}
 						{/* {JSON.stringify(args,null, 3)} */}
 					</>
 				)}

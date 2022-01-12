@@ -1,4 +1,4 @@
-import { Product } from "../02-component-patterns/interfaces/interfaces";
+import { Product } from "../interfaces/interfaces";
 
 const product1 = {
 	id: '1',
