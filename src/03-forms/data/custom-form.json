@@ -1,0 +1,82 @@
+[
+	{
+		"type": "input",
+		"name": "firstName",
+		"placeholder": "Benito",
+		"label": "First Name",
+		"value": "",
+        "validation": [
+            {
+                "type": "required",
+                "message": "First name is required"
+            },
+            {
+                "type": "minLength",
+                "message": "First name must be at least 2 characters",
+                "value": 2
+            },
+            {
+                "type": "maxLength",
+                "message": "First name cannot be more than 10 characters",
+                "value": 10
+            }
+        ]
+	},
+	{
+		"type": "input",
+		"name": "lastName",
+		"placeholder": "Martinez",
+		"label": "Last Name",
+		"value": "",
+        "validation": [
+            {
+                "type": "required",
+                "message": "Last name is required"
+            },
+            {
+                "type": "minLength",
+                "message": "First name must be at least 2 characters",
+                "value": 2
+            },
+            {
+                "type": "maxLength",
+                "message": "First name cannot be more than 10 characters",
+                "value": 10
+            }
+        ]
+	},
+	{
+		"type": "email",
+		"name": "email",
+		"placeholder": "Benito@outlook.com",
+		"label": "Email",
+		"value": "",
+        "validation": [
+            {
+                "type": "required",
+                "message": "email is required"
+            },
+            {
+                "type": "email",
+                "message": "email is not valid"
+            }
+        ]
+	},
+	{
+		"type": "select",
+		"name": "favoriteGame",
+		"label": "Favorite Game",
+		"value": "",
+		"options": [
+			{ "id": 1, "label": "Super Smash Bros" },
+			{ "id": 2, "label": "The Legend of Zelda" },
+			{ "id": 3, "label": "Resident Evil" }
+		],
+        "validation": [
+            {
+                "type": "required",
+                "message": "A selection is required"
+            }
+        ]
+	}
+]

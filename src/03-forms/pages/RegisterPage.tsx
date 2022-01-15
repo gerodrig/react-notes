@@ -55,6 +55,7 @@ export const RegisterPage = () => {
 					type='password'
 					name='password1'
 					placeholder='Password'
+					autoComplete='off'
 					value={password1}
 					onChange={onChange}
 				/>
@@ -63,6 +64,7 @@ export const RegisterPage = () => {
 				<input
 					type='password'
 					name='password2'
+					autoComplete='off'
 					placeholder='Repeat Password'
 					value={password2}
 					onChange={onChange}
